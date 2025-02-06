@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="beans.xsd">
+
+    <bean parent="fieldSetLevelMapping" id="studentDataWSDTOFieldSetLevelMapping">
+        <property name="dtoClass"
+                  value="de.hybris.platform.commercewebservicescommons.dto.Student.StudentDataWSDTO"/>
+        <property name="levelMapping">
+            <map>
+                <entry key="BASIC" value="studentId,studentName,studentPlace"/>
+                <entry key="DEFAULT" value="studentId,studentName"/>
+                <entry key="FULL" value="studentId,studentName,studentPlace,studentGuardian"/>
+            </map>
+        </property>
+    </bean>
+</beans>

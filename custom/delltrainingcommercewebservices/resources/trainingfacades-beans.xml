@@ -1,0 +1,17 @@
+<alias name="studentFacade" alias="studentFacade"/>
+<bean id="studentFacade" class="org.training.facades.student.impl.StudentFacadeImpl">
+<property name="studentServices" ref="studentServices"/>
+<property name="studentConverter" ref="studentConverter"/>
+</bean>
+
+<alias name="studentConverter" alias="studentConverter"/>
+<bean id="studentConverter" parent="abstractPopulatingConverter">
+<property name="targetClass" value="de.hybris.platform.commercefacades.Student.data.StudentData"/>
+<property name="populators">
+    <list>
+        <ref bean="studentPopulator"/>
+    </list>
+</property>
+</bean>
+
+<bean id="studentPopulator" class="org.training.facades.populators.StudentPopulator"/>

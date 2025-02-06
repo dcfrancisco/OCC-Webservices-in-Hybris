@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="beans.xsd">
+
+    <bean class="de.hybris.platform.commercefacades.Student.data.StudentData">
+        <property name="studentId" type="java.lang.String"/>
+        <property name="studentName" type="java.lang.String"/>
+        <property name="studentPlace" type="java.lang.String"/>
+        <property name="studentGuardian" type="java.lang.String"/>
+    </bean>
+
+    <bean class="de.hybris.platform.commercewebservicescommons.dto.Student.StudentDataWSDTO">
+        <property name="studentId" type="java.lang.String"/>
+        <property name="studentName" type="java.lang.String"/>
+        <property name="studentPlace" type="java.lang.String"/>
+        <property name="studentGuardian" type="java.lang.String"/>
+    </bean>
+
+    <bean class="de.hybris.platform.commercewebservicescommons.dto.Student.StudentDataListWSDTO">
+        <property name="student"
+                  type="java.util.List &lt;de.hybris.platform.commercewebservicescommons.dto.Student.StudentDataWSDTO&gt;"/>
+    </bean>
+
+    <bean class="org.anchor.queues.data.StudentDataList">
+        <property name="student"
+                  type="java.util.List &lt;de.hybris.platform.commercefacades.Student.data.StudentData&gt;"/>
+    </bean>
+</beans>

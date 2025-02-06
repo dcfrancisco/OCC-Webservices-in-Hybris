@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+ Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+-->
+<!--
+	ATTENTION: This is just an example file. You have to edit it according to your needs.
+-->
+
+<items xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="items.xsd">
+
+    <itemtypes>
+        <itemtype code="StudentDetails" autocreate="true" generate="true">
+            <deployment table="StudentTable" typecode="15020"/>
+            <attributes>
+                <attribute qualifier="studentId" type="java.lang.String">
+                    <description>Student Id</description>
+                    <modifiers unique="true" read="true" write="true" search="true"/>
+                    <persistence type="property"/>
+                </attribute>
+
+                <attribute qualifier="studentName" type="java.lang.String">
+                    <description>Student Name</description>
+                    <modifiers read="true" write="true" search="true"/>
+                    <persistence type="property"/>
+                </attribute>
+
+                <attribute qualifier="studentPlace" type="java.lang.String">
+                    <description>Students Place name</description>
+                    <modifiers read="true" write="true" search="true"/>
+                    <persistence type="property"/>
+                </attribute>
+
+                <attribute qualifier="studentGuardian" type="java.lang.String">
+                    <description>Student Guardian Name</description>
+                    <modifiers read="true" write="true" search="true"/>
+                    <persistence type="property"/>
+                </attribute>
+            </attributes>
+        </itemtype>
+    </itemtypes>
+</items>
