@@ -1,7 +1,0 @@
-<alias name="studentDao" alias="studentDao"/>
-<bean id="studentDao" class="org.training.core.Dao.impl.StudentDaoImpl">
-<property name="flexibleSearchService" ref="flexibleSearchService"/>
-<property name="modelService" ref="modelService"/>
-</bean>
-
-<bean id="studentServices" class="org.training.core.service.StudentServices"/>
