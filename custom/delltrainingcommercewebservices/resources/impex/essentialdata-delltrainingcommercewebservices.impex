@@ -14,3 +14,19 @@ INSERT_UPDATE UserGroup;uid[unique=true];locname[lang=de];locname[lang=en];group
 INSERT_UPDATE StudentDetails;studentId[unique=true];studentName;studentPlace;studentGuardian
                             ;101;John;Manila;Dad
                             ;102;Jane;Taguig;Mom
+
+INSERT_UPDATE Subject; code[unique = true]; name;
+                     ; SUB1; Mathematics
+                     ; SUB2; Physics
+                     ; SUB3; Chemistry
+                     ; SUB4; Biology
+                     ; SUB5; History
+                     ; SUB6; Literature
+                     ; SUB7; Computer Science
+                     ; SUB8; Art
+                     ; SUB9; Music
+                     ; SUB10; Geography
+
+INSERT_UPDATE Teacher; code[unique = true]; name;
+                     ; TCH1; John Doe
+                     ; TCH2; Jane Smith

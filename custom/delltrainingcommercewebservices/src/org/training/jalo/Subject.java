@@ -1,4 +1,4 @@
-package org.training.jalo.expressupdate.cron;
+package org.training.jalo;
 
 import de.hybris.platform.jalo.Item;
 import de.hybris.platform.jalo.JaloBusinessException;
@@ -6,10 +6,10 @@ import de.hybris.platform.jalo.SessionContext;
 import de.hybris.platform.jalo.type.ComposedType;
 import org.apache.log4j.Logger;
 
-public class OrderStatusUpdateCleanerCronJob extends GeneratedOrderStatusUpdateCleanerCronJob
+public class Subject extends GeneratedSubject
 {
 	@SuppressWarnings("unused")
-	private static final Logger LOG = Logger.getLogger( OrderStatusUpdateCleanerCronJob.class.getName() );
+	private static final Logger LOG = Logger.getLogger( Subject.class.getName() );
 	
 	@Override
 	protected Item createItem(final SessionContext ctx, final ComposedType type, final ItemAttributeMap allAttributes) throws JaloBusinessException

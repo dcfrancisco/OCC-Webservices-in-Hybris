@@ -9,17 +9,30 @@
  Information and shall use it only in accordance with the terms of the
  license agreement you entered into with SAP.
 -->
-<items xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="items.xsd">
+<items xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="items.xsd">
     <collectiontypes>
-        <collectiontype elementtype="BaseSite" code="BaseSiteCollection" autocreate="true"/>
+        <collectiontype elementtype="BaseSite" code="BaseSiteCollection" autocreate="true" />
     </collectiontypes>
 
+    <relations>
+        <relation code="TeacherToSubjectRelation" autocreate="true" generate="true"
+            localized="false">
+            <deployment table="TeacherSubjectRelation" typecode="15023" />
+            <sourceElement
+                type="Teacher" cardinality="many" qualifier="teachers" />
+            <targetElement
+                type="Subject" cardinality="many" qualifier="subjects" />
+        </relation>
+    </relations>
+
     <itemtypes>
-        <itemtype code="ProductExpressUpdateCleanerCronJob" autocreate="true" generate="true" extends="CronJob"
-                  jaloclass="org.training.jalo.expressupdate.cron.ProductExpressUpdateCleanerCronJob">
+        <itemtype code="ProductExpressUpdateCleanerCronJob" autocreate="true" generate="true"
+            extends="CronJob"
+            jaloclass="org.training.jalo.expressupdate.cron.ProductExpressUpdateCleanerCronJob">
             <attributes>
                 <attribute qualifier="queueTimeLimit" type="java.lang.Integer">
-                    <persistence type="property"/>
+                    <persistence type="property" />
                     <description>Only elements older than specified value (in minutes) will be removed from the queue
                     </description>
                     <defaultvalue>Integer.valueOf(1440)</defaultvalue>
@@ -27,11 +40,12 @@
             </attributes>
         </itemtype>
 
-        <itemtype code="OrderStatusUpdateCleanerCronJob" autocreate="true" generate="true" extends="CronJob"
-                  jaloclass="org.training.jalo.expressupdate.cron.OrderStatusUpdateCleanerCronJob">
+        <itemtype code="OrderStatusUpdateCleanerCronJob" autocreate="true" generate="true"
+            extends="CronJob"
+            jaloclass="org.training.jalo.expressupdate.cron.OrderStatusUpdateCleanerCronJob">
             <attributes>
                 <attribute qualifier="queueTimeLimit" type="java.lang.Integer">
-                    <persistence type="property"/>
+                    <persistence type="property" />
                     <description>Only elements older than specified value (in minutes) will be removed from the queue
                     </description>
                     <defaultvalue>Integer.valueOf(1440)</defaultvalue>
@@ -40,24 +54,24 @@
         </itemtype>
 
         <itemtype code="OldCartRemovalCronJob" autocreate="true"
-                  generate="true" extends="CronJob"
-                  jaloclass="org.training.jalo.OldCartRemovalCronJob">
+            generate="true" extends="CronJob"
+            jaloclass="org.training.jalo.OldCartRemovalCronJob">
             <attributes>
                 <attribute type="BaseSiteCollection" qualifier="sites">
-                    <modifiers/>
-                    <persistence type="property"/>
+                    <modifiers />
+                    <persistence type="property" />
                     <description>BaseSites for which old carts should be removed</description>
                 </attribute>
                 <attribute type="java.lang.Integer" qualifier="cartRemovalAge">
-                    <modifiers/>
-                    <persistence type="property"/>
+                    <modifiers />
+                    <persistence type="property" />
                     <defaultvalue>Integer.valueOf(2419200)</defaultvalue>
                     <description>After specified number of seconds carts will be cleaned up. Default is 28 days.
                     </description>
                 </attribute>
                 <attribute type="java.lang.Integer" qualifier="anonymousCartRemovalAge">
-                    <modifiers/>
-                    <persistence type="property"/>
+                    <modifiers />
+                    <persistence type="property" />
                     <defaultvalue>Integer.valueOf(1209600)</defaultvalue>
                     <description>After specified number of seconds carts will be cleaned up. Default is 14 days.
                     </description>
@@ -65,30 +79,58 @@
             </attributes>
         </itemtype>
         <itemtype code="StudentDetails" autocreate="true" generate="true">
-            <deployment table="StudentTable" typecode="15020"/>
+            <deployment table="StudentTable" typecode="15020" />
             <attributes>
                 <attribute qualifier="studentId" type="java.lang.String">
                     <description>Student Id</description>
-                    <modifiers unique="true" read="true" write="true" search="true"/>
-                    <persistence type="property"/>
+                    <modifiers unique="true" read="true" write="true" search="true" />
+                    <persistence type="property" />
                 </attribute>
 
                 <attribute qualifier="studentName" type="java.lang.String">
                     <description>Student Name</description>
-                    <modifiers read="true" write="true" search="true"/>
-                    <persistence type="property"/>
+                    <modifiers read="true" write="true" search="true" />
+                    <persistence type="property" />
                 </attribute>
 
                 <attribute qualifier="studentPlace" type="java.lang.String">
                     <description>Students Place name</description>
-                    <modifiers read="true" write="true" search="true"/>
-                    <persistence type="property"/>
+                    <modifiers read="true" write="true" search="true" />
+                    <persistence type="property" />
                 </attribute>
 
                 <attribute qualifier="studentGuardian" type="java.lang.String">
                     <description>Student Guardian Name</description>
-                    <modifiers read="true" write="true" search="true"/>
-                    <persistence type="property"/>
+                    <modifiers read="true" write="true" search="true" />
+                    <persistence type="property" />
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="Subject" autocreate="true" generate="true">
+            <deployment table="SubjectTable" typecode="15021" />
+            <attributes>
+                <attribute qualifier="code" type="java.lang.String">
+                    <modifiers read="true" write="true" optional="false" unique="true" />
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="name" type="java.lang.String">
+                    <modifiers read="true" write="true" optional="false" />
+                    <persistence type="property" />
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="Teacher" autocreate="true" generate="true">
+            <deployment table="TeacherTable" typecode="15022" />
+            <attributes>
+                <attribute qualifier="code" type="java.lang.String">
+                    <modifiers read="true" write="true" optional="false" unique="true" />
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="name" type="java.lang.String">
+                    <modifiers read="true" write="true" optional="false" />
+                    <persistence type="property" />
                 </attribute>
             </attributes>
         </itemtype>
