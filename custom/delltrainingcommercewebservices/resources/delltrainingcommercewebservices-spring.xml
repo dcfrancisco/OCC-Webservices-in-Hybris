@@ -326,6 +326,32 @@
     </bean>
     <bean id="studentPopulator" class="org.training.facades.populators.StudentPopulator" />
 
+    <!-- Teacher beans -->
+    <alias name="teacherConverter" alias="teacherConverter" />
+    <bean id="teacherConverter" parent="abstractPopulatingConverter">
+        <property name="targetClass" value="com.training.data.TeacherData" />
+        <property name="populators">
+            <list>
+                <ref bean="teacherPopulator" />
+            </list>
+        </property>
+    </bean>
+    <bean id="teacherPopulator" class="org.training.facades.populators.TeacherPopulator" />
+
+    <!-- Subject beans -->
+    <alias name="subjectConverter" alias="subjectConverter" />
+    <bean id="subjectConverter" parent="abstractPopulatingConverter">
+        <property name="targetClass" value="com.training.data.SubjectData" />
+        <property name="populators">
+            <list>
+                <ref bean="subjectPopulator" />
+            </list>
+        </property>
+    </bean>
+    <bean id="subjectPopulator" class="org.training.facades.populators.SubjectPopulator" />
+
+    <!-- Data beans -->
     <bean id="teacherData" class="com.training.data.TeacherData" scope="prototype" />
     <bean id="subjectData" class="com.training.data.SubjectData" scope="prototype" />
+
 </beans>
