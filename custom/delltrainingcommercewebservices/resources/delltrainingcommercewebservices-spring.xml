@@ -10,21 +10,20 @@
  license agreement you entered into with SAP.
 -->
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:int="http://www.springframework.org/schema/integration"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
-           http://www.springframework.org/schema/beans/spring-beans.xsd
-           http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:int="http://www.springframework.org/schema/integration"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                        http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration.xsd">
 
     <bean id="cwsProductFacade" parent="defaultProductFacade">
-        <property name="productConfiguredPopulator" ref="cwsProductConfiguredPopulator"/>
-        <property name="productConverter" ref="cwsProductConverter"/>
+        <property name="productConfiguredPopulator" ref="cwsProductConfiguredPopulator" />
+        <property name="productConverter" ref="cwsProductConverter" />
     </bean>
 
     <bean id="cwsProductConfiguredPopulator" parent="defaultProductConfiguredPopulator">
         <property name="populators">
             <map key-type="de.hybris.platform.commercefacades.product.ProductOption" merge="true">
-                <entry key="GALLERY" value-ref="cwsProductGalleryPopulatorList"/>
+                <entry key="GALLERY" value-ref="cwsProductGalleryPopulatorList" />
             </map>
         </property>
     </bean>
@@ -32,7 +31,7 @@
     <bean id="cwsProductGalleryPopulatorList" parent="abstractPopulatorList">
         <property name="populators">
             <list>
-                <ref bean="cwsProductGalleryImagesPopulator"/>
+                <ref bean="cwsProductGalleryImagesPopulator" />
             </list>
         </property>
     </bean>
@@ -40,19 +39,19 @@
     <bean id="cwsImageFormatMapping" parent="defaultImageFormatMapping">
         <property name="mapping">
             <map>
-                <entry key="superZoom" value="1200Wx1200H"/>
-                <entry key="zoom" value="515Wx515H"/>
-                <entry key="store" value="365Wx246H"/>
-                <entry key="product" value="300Wx300H"/>
-                <entry key="thumbnail" value="96Wx96H"/>
-                <entry key="cartIcon" value="65Wx65H"/>
-                <entry key="styleSwatch" value="30Wx30H"/>
+                <entry key="superZoom" value="1200Wx1200H" />
+                <entry key="zoom" value="515Wx515H" />
+                <entry key="store" value="365Wx246H" />
+                <entry key="product" value="300Wx300H" />
+                <entry key="thumbnail" value="96Wx96H" />
+                <entry key="cartIcon" value="65Wx65H" />
+                <entry key="styleSwatch" value="30Wx30H" />
             </map>
         </property>
     </bean>
 
     <bean id="cwsProductPrimaryImagePopulator" parent="defaultProductPrimaryImagePopulator">
-        <property name="imageFormatMapping" ref="cwsImageFormatMapping"/>
+        <property name="imageFormatMapping" ref="cwsImageFormatMapping" />
         <property name="imageFormats">
             <list>
                 <value>zoom</value>
@@ -64,7 +63,7 @@
     </bean>
 
     <bean id="cwsProductGalleryImagesPopulator" parent="defaultProductGalleryImagesPopulator">
-        <property name="imageFormatMapping" ref="cwsImageFormatMapping"/>
+        <property name="imageFormatMapping" ref="cwsImageFormatMapping" />
         <property name="imageFormats">
             <list>
                 <value>zoom</value>
@@ -75,244 +74,258 @@
     </bean>
 
     <bean id="cwsProductPopulator"
-          parent="defaultProductPopulator">
-        <property name="productPrimaryImagePopulator" ref="cwsProductPrimaryImagePopulator"/>
-        <property name="productModelUrlResolver" ref="delltrainingcommercewebservicesProductModelUrlResolver"/>
+        parent="defaultProductPopulator">
+        <property name="productPrimaryImagePopulator" ref="cwsProductPrimaryImagePopulator" />
+        <property name="productModelUrlResolver"
+            ref="delltrainingcommercewebservicesProductModelUrlResolver" />
     </bean>
 
     <bean id="cwsProductConverter" parent="defaultProductConverter">
         <property name="populators">
             <list>
-                <ref bean="cwsProductPopulator"/>
+                <ref bean="cwsProductPopulator" />
             </list>
         </property>
     </bean>
 
     <bean id="cwsCatalogFacade" parent="defaultCatalogFacade">
-        <property name="catalogVersionPopulator" ref="cwsCatalogVersionPopulator"/>
-        <property name="categoryHierarchyPopulator" ref="cwsCategoryHierarchyPopulator"/>
+        <property name="catalogVersionPopulator" ref="cwsCatalogVersionPopulator" />
+        <property name="categoryHierarchyPopulator" ref="cwsCategoryHierarchyPopulator" />
     </bean>
 
     <bean id="cwsCatalogVersionPopulator" parent="defaultCatalogVersionPopulator">
-        <property name="categoryHierarchyPopulator" ref="cwsCategoryHierarchyPopulator"/>
-        <property name="categoriesUrl" value="/categories"/>
+        <property name="categoryHierarchyPopulator" ref="cwsCategoryHierarchyPopulator" />
+        <property name="categoriesUrl" value="/categories" />
     </bean>
 
     <bean id="cwsCategoryHierarchyPopulator" parent="defaultCategoryHierarchyPopulator">
-        <property name="productConverter" ref="cwsProductConverter"/>
-        <property name="categoryUrlResolver" ref="delltrainingcommercewebservicesCategoryModelUrlResolver"></property>
+        <property name="productConverter" ref="cwsProductConverter" />
+        <property name="categoryUrlResolver"
+            ref="delltrainingcommercewebservicesCategoryModelUrlResolver"></property>
     </bean>
 
     <bean id="cwsProductExportFacade" parent="defaultProductExportFacade">
-        <property name="productConverter" ref="cwsProductConverter"/>
-        <property name="productCategoriesPopulator" ref="cwsProductCategoriesPopulator"/>
+        <property name="productConverter" ref="cwsProductConverter" />
+        <property name="productCategoriesPopulator" ref="cwsProductCategoriesPopulator" />
     </bean>
 
     <bean id="cwsProductCategoriesPopulator" parent="defaultProductCategoriesPopulator">
-        <property name="categoryConverter" ref="cwsCategoryConverter"/>
+        <property name="categoryConverter" ref="cwsCategoryConverter" />
     </bean>
 
     <bean id="cwsCategoryConverter" parent="defaultCategoryConverter">
-        <lookup-method name="createTarget" bean="categoryData"/>
+        <lookup-method name="createTarget" bean="categoryData" />
         <property name="populators">
             <list>
-                <ref bean="cwsCategoryPopulator"/>
+                <ref bean="cwsCategoryPopulator" />
             </list>
         </property>
     </bean>
 
     <bean id="cwsCategoryPopulator" parent="defaultCategoryPopulator">
-        <property name="categoryModelUrlResolver" ref="delltrainingcommercewebservicesCategoryModelUrlResolver"/>
+        <property name="categoryModelUrlResolver"
+            ref="delltrainingcommercewebservicesCategoryModelUrlResolver" />
     </bean>
 
-    <bean id="delltrainingcommercewebservicesProductModelUrlResolver" parent="defaultProductModelUrlResolver">
-        <property name="defaultPattern" value="/{baseSite-uid}/products/{product-code}"/>
+    <bean id="delltrainingcommercewebservicesProductModelUrlResolver"
+        parent="defaultProductModelUrlResolver">
+        <property name="defaultPattern" value="/{baseSite-uid}/products/{product-code}" />
     </bean>
 
-    <bean id="delltrainingcommercewebservicesCategoryModelUrlResolver" parent="defaultCategoryModelUrlResolver">
+    <bean id="delltrainingcommercewebservicesCategoryModelUrlResolver"
+        parent="defaultCategoryModelUrlResolver">
         <property name="pattern"
-                  value="/{baseSite-uid}/catalogs/{catalog-id}/{catalogVersion}/categories/{category-code}"/>
+            value="/{baseSite-uid}/catalogs/{catalog-id}/{catalogVersion}/categories/{category-code}" />
     </bean>
 
-    <alias name="defaultCommerceStockFacade" alias="commerceStockFacade"/>
+    <alias name="defaultCommerceStockFacade" alias="commerceStockFacade" />
     <bean id="defaultCommerceStockFacade" class="org.training.stock.impl.DefaultCommerceStockFacade">
-        <property name="baseSiteService" ref="baseSiteService"/>
-        <property name="commerceStockService" ref="commerceStockService"/>
-        <property name="pointOfServiceService" ref="pointOfServiceService"/>
-        <property name="productService" ref="productService"/>
-        <property name="baseStoreForSiteSelectorStrategy" ref="baseStoreForSiteSelectorStrategy"/>
+        <property name="baseSiteService" ref="baseSiteService" />
+        <property name="commerceStockService" ref="commerceStockService" />
+        <property name="pointOfServiceService" ref="pointOfServiceService" />
+        <property name="productService" ref="productService" />
+        <property name="baseStoreForSiteSelectorStrategy" ref="baseStoreForSiteSelectorStrategy" />
     </bean>
 
-    <alias name="defaultBaseStoreForSiteSelectorStrategy" alias="baseStoreForSiteSelectorStrategy"/>
+    <alias name="defaultBaseStoreForSiteSelectorStrategy" alias="baseStoreForSiteSelectorStrategy" />
     <bean id="defaultBaseStoreForSiteSelectorStrategy"
-          class="org.training.strategies.impl.DefaultBaseStoreForSiteSelectorStrategy"/>
+        class="org.training.strategies.impl.DefaultBaseStoreForSiteSelectorStrategy" />
 
-    <bean id="commerceWebServicesCartFacade2" class="org.training.cart.impl.CommerceWebServicesCartFacade"
-          parent="defaultCartFacade">
-        <property name="cartConverter" ref="extendedCartConverter"/>
-        <property name="commerceCartService" ref="commerceWebServicesCartService"/>
+    <bean id="commerceWebServicesCartFacade2"
+        class="org.training.cart.impl.CommerceWebServicesCartFacade"
+        parent="defaultCartFacade">
+        <property name="cartConverter" ref="extendedCartConverter" />
+        <property name="commerceCartService" ref="commerceWebServicesCartService" />
     </bean>
 
     <!-- Populator for title name -->
-    <alias name="defaultExtendedCustomerPopulator" alias="extendedCustomerPopulator"/>
+    <alias name="defaultExtendedCustomerPopulator" alias="extendedCustomerPopulator" />
     <bean id="defaultExtendedCustomerPopulator"
-          class="org.training.customer.populator.ExtendedCustomerPopulator">
-        <property name="addressConverter" ref="addressConverter"/>
+        class="org.training.customer.populator.ExtendedCustomerPopulator">
+        <property name="addressConverter" ref="addressConverter" />
     </bean>
 
     <bean parent="modifyPopulatorList">
-        <property name="list" ref="customerConverter"/>
-        <property name="add" ref="extendedCustomerPopulator"/>
+        <property name="list" ref="customerConverter" />
+        <property name="add" ref="extendedCustomerPopulator" />
     </bean>
 
     <!-- Update Queues -->
 
     <bean id="abstractUpdateQueue"
-          class="org.training.queues.impl.AbstractUpdateQueue" abstract="true">
-        <property name="maxCapacity" value="100000"/>
+        class="org.training.queues.impl.AbstractUpdateQueue" abstract="true">
+        <property name="maxCapacity" value="100000" />
     </bean>
 
-    <!--Express Update Queue functionality-->
+    <!--Express
+    Update Queue functionality-->
 
     <bean id="productExpressUpdateQueue"
-          class="org.training.queues.impl.ProductExpressUpdateQueue"
-          parent="abstractUpdateQueue"/>
+        class="org.training.queues.impl.ProductExpressUpdateQueue"
+        parent="abstractUpdateQueue" />
 
     <bean id="productExpressUpdateChannelListener"
-          class="org.training.queues.channel.ProductExpressUpdateChannelListener">
-        <property name="productExpressUpdateElementConverter" ref="productExpressUpdateElementConverter"/>
-        <property name="productExpressUpdateQueue" ref="productExpressUpdateQueue"/>
+        class="org.training.queues.channel.ProductExpressUpdateChannelListener">
+        <property name="productExpressUpdateElementConverter"
+            ref="productExpressUpdateElementConverter" />
+        <property name="productExpressUpdateQueue" ref="productExpressUpdateQueue" />
     </bean>
 
     <int:service-activator input-channel="productExpressUpdateChannel"
-                           ref="productExpressUpdateChannelListener"
-                           method="onMessage"/>
+        ref="productExpressUpdateChannelListener"
+        method="onMessage" />
 
     <bean id="productExpressUpdateElementData"
-          class="org.training.queues.data.ProductExpressUpdateElementData" scope="prototype"/>
+        class="org.training.queues.data.ProductExpressUpdateElementData" scope="prototype" />
 
-    <alias name="defaultProductExpressUpdateElementPopulator" alias="productExpressUpdateElementPopulator"/>
+    <alias name="defaultProductExpressUpdateElementPopulator"
+        alias="productExpressUpdateElementPopulator" />
     <bean id="defaultProductExpressUpdateElementPopulator"
-          class="org.training.queues.populators.ProductExpressUpdateElementPopulator"/>
+        class="org.training.queues.populators.ProductExpressUpdateElementPopulator" />
 
-    <alias name="defaultProductExpressUpdateElementConverter" alias="productExpressUpdateElementConverter"/>
+    <alias name="defaultProductExpressUpdateElementConverter"
+        alias="productExpressUpdateElementConverter" />
     <bean id="defaultProductExpressUpdateElementConverter" parent="abstractPopulatingConverter">
-        <lookup-method name="createTarget" bean="productExpressUpdateElementData"/>
+        <lookup-method name="createTarget" bean="productExpressUpdateElementData" />
         <property name="populators">
             <list>
-                <ref bean="productExpressUpdateElementPopulator"/>
+                <ref bean="productExpressUpdateElementPopulator" />
             </list>
         </property>
     </bean>
 
     <bean id="productExpressUpdateCleanerJob"
-          class="org.training.queues.cronjob.ProductExpressUpdateCleanerJob"
-          parent="abstractJobPerformable">
-        <property name="productExpressUpdateQueue" ref="productExpressUpdateQueue"/>
+        class="org.training.queues.cronjob.ProductExpressUpdateCleanerJob"
+        parent="abstractJobPerformable">
+        <property name="productExpressUpdateQueue" ref="productExpressUpdateQueue" />
     </bean>
 
     <!-- Order Status Update Queue -->
 
     <bean id="orderStatusUpdateQueue"
-          class="org.training.queues.impl.OrderStatusUpdateQueue"
-          parent="abstractUpdateQueue"/>
+        class="org.training.queues.impl.OrderStatusUpdateQueue"
+        parent="abstractUpdateQueue" />
 
     <bean id="orderStatusUpdateChannelListener"
-          class="org.training.queues.channel.OrderStatusUpdateChannelListener">
-        <property name="orderStatusUpdateElementConverter" ref="orderStatusUpdateElementConverter"/>
-        <property name="orderStatusUpdateQueue" ref="orderStatusUpdateQueue"/>
+        class="org.training.queues.channel.OrderStatusUpdateChannelListener">
+        <property name="orderStatusUpdateElementConverter" ref="orderStatusUpdateElementConverter" />
+        <property name="orderStatusUpdateQueue" ref="orderStatusUpdateQueue" />
     </bean>
 
     <int:service-activator input-channel="orderStatusUpdateChannel"
-                           ref="orderStatusUpdateChannelListener"
-                           method="onMessage"/>
+        ref="orderStatusUpdateChannelListener"
+        method="onMessage" />
 
     <bean id="orderStatusUpdateElementData"
-          class="org.training.queues.data.OrderStatusUpdateElementData" scope="prototype"/>
+        class="org.training.queues.data.OrderStatusUpdateElementData" scope="prototype" />
 
-    <alias name="defaultOrderStatusUpdateElementPopulator" alias="orderStatusUpdateElementPopulator"/>
+    <alias name="defaultOrderStatusUpdateElementPopulator" alias="orderStatusUpdateElementPopulator" />
     <bean id="defaultOrderStatusUpdateElementPopulator"
-          class="org.training.queues.populators.OrderStatusUpdateElementPopulator"/>
+        class="org.training.queues.populators.OrderStatusUpdateElementPopulator" />
 
-    <alias name="defaultProductExpressUpdateElementConverter" alias="orderStatusUpdateElementConverter"/>
+    <alias name="defaultProductExpressUpdateElementConverter"
+        alias="orderStatusUpdateElementConverter" />
     <bean id="defaultOrderStatusUpdateElementConverter" parent="abstractPopulatingConverter">
-        <lookup-method name="createTarget" bean="orderStatusUpdateElementData"/>
+        <lookup-method name="createTarget" bean="orderStatusUpdateElementData" />
         <property name="populators">
             <list>
-                <ref bean="orderStatusUpdateElementPopulator"/>
+                <ref bean="orderStatusUpdateElementPopulator" />
             </list>
         </property>
     </bean>
 
     <bean id="orderStatusUpdateCleanerJob"
-          class="org.training.queues.cronjob.OrderStatusUpdateCleanerJob"
-          parent="abstractJobPerformable">
-        <property name="orderStatusUpdateQueue" ref="orderStatusUpdateQueue"/>
+        class="org.training.queues.cronjob.OrderStatusUpdateCleanerJob"
+        parent="abstractJobPerformable">
+        <property name="orderStatusUpdateQueue" ref="orderStatusUpdateQueue" />
     </bean>
 
     <!-- Old cart cleaner -->
     <bean id="oldCartRemovalJob" class="org.training.cronjob.OldCartRemovalJob"
-          parent="abstractJobPerformable">
-        <property name="commerceCartDao" ref="commerceCartDao"/>
-        <property name="timeService" ref="timeService"/>
-        <property name="userService" ref="userService"/>
+        parent="abstractJobPerformable">
+        <property name="commerceCartDao" ref="commerceCartDao" />
+        <property name="timeService" ref="timeService" />
+        <property name="userService" ref="userService" />
     </bean>
 
-    <alias alias="orderCodeIdentificationStrategy" name="defaultOrderCodeIdentificationStrategy"/>
+    <alias alias="orderCodeIdentificationStrategy" name="defaultOrderCodeIdentificationStrategy" />
     <bean id="defaultOrderCodeIdentificationStrategy"
-          class="org.training.strategies.impl.DefaultOrderCodeIdentificationStrategy">
-        <property name="idPattern" value="[0-9a-f]{40}|[0-9a-f-]{36}"/>
+        class="org.training.strategies.impl.DefaultOrderCodeIdentificationStrategy">
+        <property name="idPattern" value="[0-9a-f]{40}|[0-9a-f-]{36}" />
     </bean>
 
     <!-- Beans for user matching in commerce web services -->
-    <alias name="defaultWsUserFacade" alias="wsUserFacade"/>
+    <alias name="defaultWsUserFacade" alias="wsUserFacade" />
     <bean id="defaultWsUserFacade" parent="defaultUserFacade">
-        <property name="userMatchingService" ref="wsUserMatchingService"/>
+        <property name="userMatchingService" ref="wsUserMatchingService" />
     </bean>
 
-    <alias name="defaultWsCustomerFacade" alias="wsCustomerFacade"/>
+    <alias name="defaultWsCustomerFacade" alias="wsCustomerFacade" />
     <bean id="defaultWsCustomerFacade" parent="defaultCustomerFacade">
-        <property name="userMatchingService" ref="wsUserMatchingService"/>
-        <property name="userFacade" ref="wsUserFacade"/>
+        <property name="userMatchingService" ref="wsUserMatchingService" />
+        <property name="userFacade" ref="wsUserFacade" />
     </bean>
 
-    <alias name="defaultWsCustomerGroupFacade" alias="wsCustomerGroupFacade"/>
+    <alias name="defaultWsCustomerGroupFacade" alias="wsCustomerGroupFacade" />
     <bean id="defaultWsCustomerGroupFacade" parent="defaultCustomerGroupFacade">
-        <property name="userMatchingService" ref="wsUserMatchingService"/>
+        <property name="userMatchingService" ref="wsUserMatchingService" />
     </bean>
 
-    <alias name="defaultWsUserMatchingService" alias="wsUserMatchingService"/>
+    <alias name="defaultWsUserMatchingService" alias="wsUserMatchingService" />
     <bean id="defaultWsUserMatchingService" parent="defaultUserMatchingService">
         <property name="matchingStrategies">
             <list>
-                <ref bean="customerIdMatchingStrategy"/>
-                <ref bean="userUIDMatchingStrategy"/>
+                <ref bean="customerIdMatchingStrategy" />
+                <ref bean="userUIDMatchingStrategy" />
             </list>
         </property>
     </bean>
 
-    <alias name="studentDao" alias="studentDao"/>
+    <alias name="studentDao" alias="studentDao" />
     <bean id="studentDao" class="org.training.core.Dao.impl.StudentDaoImpl">
-        <property name="flexibleSearchService" ref="flexibleSearchService"/>
-        <property name="modelService" ref="modelService"/>
+        <property name="flexibleSearchService" ref="flexibleSearchService" />
+        <property name="modelService" ref="modelService" />
     </bean>
 
-    <bean id="studentServices" class="org.training.core.service.StudentServices"/>
-    <alias name="studentFacade" alias="studentFacade"/>
+    <bean id="studentServices" class="org.training.core.service.StudentServices" />
+    <alias name="studentFacade" alias="studentFacade" />
     <bean id="studentFacade" class="org.training.facades.student.impl.StudentFacadeImpl">
-        <property name="studentServices" ref="studentServices"/>
-        <property name="studentConverter" ref="studentConverter"/>
+        <property name="studentServices" ref="studentServices" />
+        <property name="studentConverter" ref="studentConverter" />
     </bean>
 
-    <alias name="studentConverter" alias="studentConverter"/>
+    <alias name="studentConverter" alias="studentConverter" />
     <bean id="studentConverter" parent="abstractPopulatingConverter">
-        <property name="targetClass" value="de.hybris.platform.commercefacades.Student.data.StudentData"/>
+        <property name="targetClass"
+            value="de.hybris.platform.commercefacades.Student.data.StudentData" />
         <property name="populators">
             <list>
-                <ref bean="studentPopulator"/>
+                <ref bean="studentPopulator" />
             </list>
         </property>
     </bean>
+    <bean id="studentPopulator" class="org.training.facades.populators.StudentPopulator" />
 
-    <bean id="studentPopulator" class="org.training.facades.populators.StudentPopulator"/>
+    <bean id="teacherData" class="com.training.data.TeacherData" scope="prototype" />
+    <bean id="subjectData" class="com.training.data.SubjectData" scope="prototype" />
 </beans>

@@ -9,200 +9,204 @@
  Information and shall use it only in accordance with the terms of the
  license agreement you entered into with SAP.
 -->
-<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="beans.xsd">
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="beans.xsd">
 
     <enum class="org.training.populator.options.PaymentInfoOption">
         <value>BASIC</value>
         <value>BILLING_ADDRESS</value>
     </enum>
 
-    <!--auth response  -->
+    <!--auth
+    response  -->
     <bean class="org.training.auth.data.LogoutResponse">
-        <property name="success" type="boolean"/>
+        <property name="success" type="boolean" />
     </bean>
 
     <!-- storesession data -->
 
     <bean class="org.training.storesession.data.LanguageDataList">
         <property name="languages"
-                  type="java.util.Collection&lt;de.hybris.platform.commercefacades.storesession.data.LanguageData>"/>
+            type="java.util.Collection&lt;de.hybris.platform.commercefacades.storesession.data.LanguageData>" />
     </bean>
 
     <bean class="org.training.storesession.data.CurrencyDataList">
         <property name="currencies"
-                  type="java.util.Collection&lt;de.hybris.platform.commercefacades.storesession.data.CurrencyData>"/>
+            type="java.util.Collection&lt;de.hybris.platform.commercefacades.storesession.data.CurrencyData>" />
     </bean>
 
     <!-- order data -->
 
     <bean class="org.training.order.data.CartDataList">
         <property name="carts"
-                  type="java.util.List&lt;de.hybris.platform.commercefacades.order.data.CartData>"/>
+            type="java.util.List&lt;de.hybris.platform.commercefacades.order.data.CartData>" />
     </bean>
 
     <bean class="org.training.order.data.OrderEntryDataList">
         <property name="orderEntries"
-                  type="java.util.List&lt;de.hybris.platform.commercefacades.order.data.OrderEntryData>"/>
+            type="java.util.List&lt;de.hybris.platform.commercefacades.order.data.OrderEntryData>" />
     </bean>
 
     <bean class="org.training.order.data.CardTypeDataList">
         <property name="cardTypes"
-                  type="java.util.List&lt;de.hybris.platform.commercefacades.order.data.CardTypeData>"/>
+            type="java.util.List&lt;de.hybris.platform.commercefacades.order.data.CardTypeData>" />
     </bean>
 
     <bean class="de.hybris.platform.commercefacades.order.data.CartModificationDataList">
         <property name="cartModificationList"
-                  type="java.util.List&lt;de.hybris.platform.commercefacades.order.data.CartModificationData>"/>
+            type="java.util.List&lt;de.hybris.platform.commercefacades.order.data.CartModificationData>" />
     </bean>
 
     <!-- product data -->
 
     <bean class="org.training.product.data.ProductDataList">
         <property name="products"
-                  type="java.util.List&lt;de.hybris.platform.commercefacades.product.data.ProductData>"/>
-        <property name="catalog" type="String"/>
-        <property name="version" type="String"/>
-        <property name="totalProductCount" type="int"/>
-        <property name="totalPageCount" type="int"/>
-        <property name="currentPage" type="int"/>
+            type="java.util.List&lt;de.hybris.platform.commercefacades.product.data.ProductData>" />
+        <property name="catalog" type="String" />
+        <property name="version" type="String" />
+        <property name="totalProductCount" type="int" />
+        <property name="totalPageCount" type="int" />
+        <property name="currentPage" type="int" />
     </bean>
 
     <bean class="org.training.product.data.PromotionDataList">
         <property name="promotions"
-                  type="java.util.List&lt;de.hybris.platform.commercefacades.product.data.PromotionData>"/>
+            type="java.util.List&lt;de.hybris.platform.commercefacades.product.data.PromotionData>" />
     </bean>
 
     <bean class="org.training.product.data.PromotionResultDataList">
         <property name="promotions"
-                  type="java.util.List&lt;de.hybris.platform.commercefacades.product.data.PromotionResultData>"/>
+            type="java.util.List&lt;de.hybris.platform.commercefacades.product.data.PromotionResultData>" />
     </bean>
 
     <bean class="org.training.product.data.ReviewDataList">
-        <property name="reviews" type="java.util.List&lt;de.hybris.platform.commercefacades.product.data.ReviewData>"/>
+        <property name="reviews"
+            type="java.util.List&lt;de.hybris.platform.commercefacades.product.data.ReviewData>" />
     </bean>
 
     <bean class="org.training.product.data.SuggestionDataList">
         <property name="suggestions"
-                  type="java.util.List&lt;de.hybris.platform.commercefacades.product.data.SuggestionData>"/>
+            type="java.util.List&lt;de.hybris.platform.commercefacades.product.data.SuggestionData>" />
     </bean>
 
     <!-- user data -->
 
     <bean class="org.training.user.data.TitleDataList">
-        <property name="titles" type="java.util.List&lt;de.hybris.platform.commercefacades.user.data.TitleData>"/>
+        <property name="titles"
+            type="java.util.List&lt;de.hybris.platform.commercefacades.user.data.TitleData>" />
     </bean>
 
     <bean class="org.training.user.data.CountryDataList">
-        <property name="countries" type="java.util.List&lt;de.hybris.platform.commercefacades.user.data.CountryData>"/>
+        <property name="countries"
+            type="java.util.List&lt;de.hybris.platform.commercefacades.user.data.CountryData>" />
     </bean>
 
     <bean class="org.training.user.data.RegionDataList">
         <property name="regions"
-                  type="java.util.List&lt;de.hybris.platform.commercefacades.user.data.RegionData>"/>
+            type="java.util.List&lt;de.hybris.platform.commercefacades.user.data.RegionData>" />
     </bean>
 
     <bean class="org.training.user.data.AddressDataList">
-        <property name="addresses" type="java.util.List&lt;de.hybris.platform.commercefacades.user.data.AddressData>"/>
+        <property name="addresses"
+            type="java.util.List&lt;de.hybris.platform.commercefacades.user.data.AddressData>" />
     </bean>
 
     <!-- voucher data -->
     <bean class="org.training.voucher.data.VoucherDataList">
         <property name="vouchers"
-                  type="java.util.List&lt;de.hybris.platform.commercefacades.voucher.data.VoucherData>"/>
+            type="java.util.List&lt;de.hybris.platform.commercefacades.voucher.data.VoucherData>" />
     </bean>
 
     <!-- validation data -->
     <bean class="org.training.validation.data.AddressValidationData">
-        <property name="errors" type="de.hybris.platform.webservicescommons.dto.error.ErrorListWsDTO"/>
-        <property name="decision" type="String"/>
+        <property name="errors"
+            type="de.hybris.platform.webservicescommons.dto.error.ErrorListWsDTO" />
+        <property name="decision" type="String" />
         <property name="suggestedAddressesList"
-                  type="org.training.user.data.AddressDataList"/>
+            type="org.training.user.data.AddressDataList" />
     </bean>
 
     <!-- Additional title property for CustomerData -->
     <bean class="de.hybris.platform.commercefacades.user.data.CustomerData"
-          extends="de.hybris.platform.commercefacades.user.data.PrincipalData">
-        <property name="title" type="String"/>
+        extends="de.hybris.platform.commercefacades.user.data.PrincipalData">
+        <property name="title" type="String" />
     </bean>
 
     <bean class="org.training.user.data.LoginChangeResponse">
-        <property name="success" type="boolean"/>
+        <property name="success" type="boolean" />
     </bean>
 
     <bean class="org.training.user.data.PasswordRestoreResponse">
-        <property name="success" type="boolean"/>
+        <property name="success" type="boolean" />
     </bean>
 
     <!-- update queues -->
 
     <bean class="org.training.queues.data.ProductExpressUpdateElementData">
-        <property name="code" type="String"/>
-        <property name="catalogId" type="String"/>
-        <property name="catalogVersion" type="String"/>
+        <property name="code" type="String" />
+        <property name="catalogId" type="String" />
+        <property name="catalogVersion" type="String" />
     </bean>
 
     <bean class="org.training.queues.data.ProductExpressUpdateElementDataList">
         <property name="productExpressUpdateElements"
-                  type="java.util.List&lt;org.training.queues.data.ProductExpressUpdateElementData>"/>
+            type="java.util.List&lt;org.training.queues.data.ProductExpressUpdateElementData>" />
     </bean>
 
     <bean class="org.training.queues.data.OrderStatusUpdateElementData">
-        <property name="code" type="String"/>
-        <property name="status" type="String"/>
-        <property name="baseSiteId" type="String"/>
+        <property name="code" type="String" />
+        <property name="status" type="String" />
+        <property name="baseSiteId" type="String" />
     </bean>
 
     <bean class="org.training.queues.data.OrderStatusUpdateElementDataList">
         <property name="orderStatusUpdateElements"
-                  type="java.util.List&lt;org.training.queues.data.OrderStatusUpdateElementData>"/>
+            type="java.util.List&lt;org.training.queues.data.OrderStatusUpdateElementData>" />
     </bean>
 
     <bean class="org.training.store.data.StoreCountListData">
         <property name="countriesAndRegionsStoreCount"
-                  type="java.util.List&lt;de.hybris.platform.commercefacades.store.data.StoreCountData>"/>
+            type="java.util.List&lt;de.hybris.platform.commercefacades.store.data.StoreCountData>" />
     </bean>
 
     <bean class="org.training.store.data.PointOfServiceListData">
         <property name="pointOfServices"
-                  type="java.util.List&lt;de.hybris.platform.commercefacades.storelocator.data.PointOfServiceData>"/>
+            type="java.util.List&lt;de.hybris.platform.commercefacades.storelocator.data.PointOfServiceData>" />
     </bean>
 
     <!-- Consent management -->
     <bean class="org.training.consent.data.ConsentTemplateDataList">
         <property name="consentTemplates"
-                  type="java.util.List&lt;de.hybris.platform.commercefacades.consent.data.ConsentTemplateData>"/>
+            type="java.util.List&lt;de.hybris.platform.commercefacades.consent.data.ConsentTemplateData>" />
     </bean>
 
     <!-- Base Sites -->
     <bean class="org.training.basesite.data.BaseSiteDataList">
         <property name="baseSites"
-                  type="java.util.List&lt;de.hybris.platform.commercefacades.basesite.data.BaseSiteData>"/>
+            type="java.util.List&lt;de.hybris.platform.commercefacades.basesite.data.BaseSiteData>" />
     </bean>
 
     <bean class="de.hybris.platform.commercefacades.Student.data.StudentData">
-        <property name="studentId" type="java.lang.String"/>
-        <property name="studentName" type="java.lang.String"/>
-        <property name="studentPlace" type="java.lang.String"/>
-        <property name="studentGuardian" type="java.lang.String"/>
+        <property name="studentId" type="java.lang.String" />
+        <property name="studentName" type="java.lang.String" />
+        <property name="studentPlace" type="java.lang.String" />
+        <property name="studentGuardian" type="java.lang.String" />
     </bean>
     <bean class="de.hybris.platform.commercewebservicescommons.dto.Student.StudentDataWSDTO">
-        <property name="studentId" type="java.lang.String"/>
-        <property name="studentName" type="java.lang.String"/>
-        <property name="studentPlace" type="java.lang.String"/>
-        <property name="studentGuardian" type="java.lang.String"/>
+        <property name="studentId" type="java.lang.String" />
+        <property name="studentName" type="java.lang.String" />
+        <property name="studentPlace" type="java.lang.String" />
+        <property name="studentGuardian" type="java.lang.String" />
     </bean>
 
     <bean class="de.hybris.platform.commercewebservicescommons.dto.Student.StudentDataListWSDTO">
         <property name="student"
-                  type="java.util.List &lt;de.hybris.platform.commercewebservicescommons.dto.Student.StudentDataWSDTO>"/>
+            type="java.util.List &lt;de.hybris.platform.commercewebservicescommons.dto.Student.StudentDataWSDTO>" />
     </bean>
 
     <bean class="org.anchor.queues.data.StudentDataList">
         <property name="student"
-                  type="java.util.List &lt;de.hybris.platform.commercefacades.Student.data.StudentData>"/>
+            type="java.util.List &lt;de.hybris.platform.commercefacades.Student.data.StudentData>" />
     </bean>
 
-
-    <bean id="teacherData" class="com.training.data.TeacherData" scope="prototype"/>
-    <bean id="subjectData" class="com.training.data.SubjectData" scope="prototype"/>
 </beans>
