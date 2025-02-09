@@ -201,4 +201,8 @@
         <property name="student"
                   type="java.util.List &lt;de.hybris.platform.commercefacades.Student.data.StudentData>"/>
     </bean>
+
+
+    <bean id="teacherData" class="com.training.data.TeacherData" scope="prototype"/>
+    <bean id="subjectData" class="com.training.data.SubjectData" scope="prototype"/>
 </beans>
