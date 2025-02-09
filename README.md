@@ -1,12 +1,11 @@
 # OCC Webservices in Hybris
 
-This project is based on the blog post: [OCC Webservices in Hybris](https://community.sap.com/t5/crm-and-cx-blogs-by-members/occ-webservices-in-hybris/ba-p/13525173). It demonstrates the setup of OCC Webservices in SAP Hybris, extending it with a **many-to-many relationship** between **Teachers and Subjects**.
+This project is based on the blog post: [OCC Webservices in Hybris](https://community.sap.com/t5/crm-and-cx-blogs-by-members/occ-webservices-in-hybris/ba-p/13525173). It demonstrates the setup of OCC Webservices in SAP Commerce Cloud. The project implements a **Students API** that fetches student details using **FlexibleSearch Queries**.
 
 ## 📌 Features
 
 - Exposes REST endpoints using **OCC Webservices**
 - Implements **Students API** with GET requests
-- Demonstrates **Many-to-Many Relationship** with **Teachers and Subjects**
 - Uses **FlexibleSearch Queries** to fetch relationships
 
 ---
