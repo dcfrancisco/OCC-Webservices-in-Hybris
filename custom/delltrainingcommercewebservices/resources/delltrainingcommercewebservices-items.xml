@@ -78,6 +78,7 @@
                 </attribute>
             </attributes>
         </itemtype>
+
         <itemtype code="StudentDetails" autocreate="true" generate="true">
             <deployment table="StudentTable" typecode="15020" />
             <attributes>
